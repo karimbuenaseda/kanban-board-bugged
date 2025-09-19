@@ -8,8 +8,8 @@
   
   <div class="main-card">
     <mat-nav-list>
-      <a mat-list-item *ngFor="let kanban of kanbanList" routerLink="/kanbans/{{kanban.id}}"> 
-        <p class="kanban-title">{{kanban.title}}</p>
+      <a mat-list-item *ngFor="let kanban of kanbanList; let i = index" routerLink="/kanbans/{{kanban.id}}">
+        <p class="kanban-title" *ngIf="i > 0">{{kanban.title}}</p>
       </a>
     </mat-nav-list>
   </div>

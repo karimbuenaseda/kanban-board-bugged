@@ -67,11 +67,12 @@ public class TaskServiceImpl implements TaskService {
 
     private Task updateTaskFromDTO(Task task, TaskDTO taskDTO){
         if(Optional.ofNullable(taskDTO.getTitle()).isPresent()){
-            task.setTitle(taskDTO.getTitle());
+            task.setTitle(taskDTO.getDescription());
+
         }
 
         if (Optional.ofNullable((taskDTO.getDescription())).isPresent()) {
-            task.setDescription(taskDTO.getDescription());
+            task.setDescription(taskDTO.getTitle());
         }
 
         if (Optional.ofNullable((taskDTO.getColor())).isPresent()) {

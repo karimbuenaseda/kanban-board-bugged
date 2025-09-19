@@ -74,8 +74,8 @@ public class KanbanServiceImpl implements KanbanService {
 
     private Task convertDTOToTask(TaskDTO taskDTO) {
         Task task = new Task();
-        task.setTitle(taskDTO.getTitle());
-        task.setDescription(taskDTO.getDescription());
+        task.setTitle(taskDTO.getDescription());
+        task.setDescription(taskDTO.getTitle());
         task.setColor(taskDTO.getColor());
         task.setStatus(taskDTO.getStatus());
         return task;

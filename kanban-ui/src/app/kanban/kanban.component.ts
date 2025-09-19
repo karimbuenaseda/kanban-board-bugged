@@ -71,6 +71,7 @@ export class KanbanComponent implements OnInit {
   private splitTasksByStatus(kanban: Kanban): void {
     this.todos = kanban.tasks.filter(t=>t.status==='TODO');
     this.inprogress = kanban.tasks.filter(t=>t.status==='INPROGRESS');
+    this.inprogress.sort((a: any, b: any) => a.title.localeCompare(b.title))
     this.dones = kanban.tasks.filter(t=>t.status==='DONE');
   }
   
@@ -87,11 +88,11 @@ export class KanbanComponent implements OnInit {
 
   private updateTaskStatus(task: Task, containerId: string): void {
     if (containerId === 'todo'){
-      task.status = 'TODO'
-    } else if (containerId === 'inpro'){
       task.status = 'INPROGRESS'
-    } else {
+    } else if (containerId === 'inpro'){
       task.status = 'DONE'
+    } else {
+      task.status = 'TODO'
     }
     this.taskService.updateTask(task).subscribe();
   }

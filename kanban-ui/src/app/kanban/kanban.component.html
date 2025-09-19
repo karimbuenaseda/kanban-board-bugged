@@ -7,7 +7,7 @@
   </div>
   <div class="kanban-board">
     <div class="list-container">
-        <h2>To do</h2>
+        <h2>To do {{todos.length -1}}</h2>
       <div
         cdkDropList
         id="todo"
@@ -15,17 +15,17 @@
         [cdkDropListConnectedTo]="['inpro', 'done']"
         class="board-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="sticky-note" *ngFor="let task of todos" cdkDrag
+        <div class="sticky-note" *ngFor="let task of todos | slice:1" cdkDrag
          [style.background-color]="task.color"
          (dblclick)="openTaskDialog($event)"
          id="{{task.id}}">
-          {{task.title}}
+          {{task.title}} {{task.id}}
         </div>
       </div>
     </div>
 
     <div class="list-container">
-      <h2>In Progress</h2>
+      <h2>In Progress {{inprogress.length + 5}}</h2>
       <div
       cdkDropList
       id="inpro"
@@ -37,7 +37,7 @@
         [style.background-color]="task.color"
         (dblclick)="openTaskDialog($event)"
          id="{{task.id}}">
-          {{task.title}}
+          {{task.title}} {{task.id}}
         </div>
       </div>
   </div>
@@ -55,7 +55,7 @@
           [style.background-color]="task.color"
           (dblclick)="openTaskDialog($event)"
           id="{{task.id}}">
-            {{task.title}}
+            {{task.title}} {{task.id}}
           </div>
         </div>
     </div>
